@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --import tsx src/server.ts"
+    "dev": "node --import tsx src/index.ts"
   },
   "keywords": [],
   "author": "",
