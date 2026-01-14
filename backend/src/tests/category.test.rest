@@ -1,0 +1,29 @@
+### HTTP/1.1 200 OK
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+  "email": "admint@test.com",
+  "password": "password123"
+}
+
+### get all categories
+GET http://localhost:3000/categories
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQyODc2OCwiZXhwIjoxNzY4NDM5NTY4fQ.5rmQ9S4nF6oGPl4vWhS9t99oksfUrPz9_evV4z-O9B0
+
+### get category by id
+GET http://localhost:3000/categories/cmkekx0nj0000oki8rt33k1q7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQyODc2OCwiZXhwIjoxNzY4NDM5NTY4fQ.5rmQ9S4nF6oGPl4vWhS9t99oksfUrPz9_evV4z-O9B0
+
+### update cat by an admin 
+POST http://localhost:3000/categories
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQyODc2OCwiZXhwIjoxNzY4NDM5NTY4fQ.5rmQ9S4nF6oGPl4vWhS9t99oksfUrPz9_evV4z-O9B0
+Content-Type: application/json
+
+{
+  "name": "Nouvelle catégorie"
+}
+
+### delete category by admin : HTTP/1.1 200 OK
+DELETE http://localhost:3000/categories/cmkekz74n0003oki8c29ps2e3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQyODc2OCwiZXhwIjoxNzY4NDM5NTY4fQ.5rmQ9S4nF6oGPl4vWhS9t99oksfUrPz9_evV4z-O9B0
