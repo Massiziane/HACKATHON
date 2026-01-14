@@ -12,8 +12,6 @@ import responseRoutes from './routes/reponse.routes.js';
 import categoryRoutes from './routes/category.routes.js';
 
 
-
-
 const app = express();
 
 
@@ -36,12 +34,7 @@ app.use('/cours', authMiddleware, coursRoutes);
 app.use("/quiz", quizRoutes);
 app.use("/questions", questionRoutes);
 app.use("/response", responseRoutes);
-app.use("/categories", categoryRoutes);
-
-
-
-
-
+app.use("/categories", authMiddleware, categoryRoutes);
 
 
 export default app;

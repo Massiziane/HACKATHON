@@ -53,8 +53,10 @@ export async function updateUser(req: Request, res: Response) {
 
 
     // admin seulement peut modifier
-    if(req.user!.role === "admin" && req.user!.id !== id) {
-        return res.status(403).json({ message: "Accès refusé — vous ne pouvez modifier que votre profil" });
+    if (req.user!.role !== "admin" && req.user!.id !==  id) {
+        return res.status(403).json({
+            message: "Accès refusé — droits insuffisants"
+        });
     }
 
     try {
@@ -76,10 +78,9 @@ export async function deleteUser(req: Request, res: Response) {
     if (!id) return res.status(400).json({message : "ID manquant"});
 
     // admin seulement peut modifier
-    if(req.user!.role === "admin" && req.user!.id !== id) {
-        return res.status(403).json({ message: "Accès refusé — vous ne pouvez modifier que votre profil" });
+    if (req.user!.role !== "admin" && req.user!.id !== id) {
+        return res.status(403).json({ message: "Accès refusé — droits insuffisants" });
     }
-
     try {
         await prisma.user.delete({ where : { id: id as string } });
         res.status(200).json({ message : "Utilisateur supprimé" });
@@ -88,5 +89,3 @@ export async function deleteUser(req: Request, res: Response) {
         res.status(500).json({ message : "Erreur serveur"});
     }
 }
-
-
