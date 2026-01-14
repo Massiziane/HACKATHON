@@ -116,10 +116,18 @@ model Quiz {
  
 model Question {
   id      String   @id @default(cuid())
-  text    String
-  options String[]
-  answer  String
+  text    String 
+  options Reponse[]
  
   quizId String
   quiz   Quiz   @relation(fields: [quizId], references: [id], onDelete: Cascade)
+}
+
+model Reponse {
+  id      String   @id @default(cuid())
+  text    String
+	bonneReponse Boolean
+
+  question		String				@relation(fields: [questionId], references: [id], onDelete: Cascade)
+  questionID		String
 }
