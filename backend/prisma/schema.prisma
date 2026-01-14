@@ -128,6 +128,6 @@ model Reponse {
   text    String
 	bonneReponse Boolean
 
-  question		String				@relation(fields: [questionId], references: [id], onDelete: Cascade)
+  question		Question				@relation(fields: [questionID], references: [id], onDelete: Cascade)
   questionID		String
 }
