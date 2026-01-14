@@ -5,7 +5,16 @@ Content-Type: application/json
 {
   "firstName": "Alice",
   "lastName": "Student",
-  "email": "alice@student.com",
+  "email": "alic4@student.com",
   "password": "password123",
   "role": "etudiant"
+}
+
+### log in 
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+  "email": "alic4@student.com",
+  "password": "password123"
 }

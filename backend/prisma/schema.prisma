@@ -20,7 +20,7 @@ model User {
 		password  String
 		firstName String
 		lastName  String
-		role      Role   @default(etudiant)
+		role      Role   @default(USER)
 		
 		formations Formation[]
 		cours      Cours[]     @relation("TeacherCours") // ajouté relation inverse
@@ -32,9 +32,11 @@ model User {
 }
  
 enum Role {
+    USER
 		admin
-		enseignant
-		etudiant
+		Createur
+
+		Apprenant
 }
  
 model Categorie {
@@ -123,3 +125,4 @@ model Question {
   quizId String
   quiz   Quiz   @relation(fields: [quizId], references: [id], onDelete: Cascade)
 }
+
