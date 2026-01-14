@@ -1,0 +1,9 @@
+### POST formation
+POST http://localhost:3000/formations
+Content-Type: application/json
+
+{
+    "title": "ABc",  
+    "description": "BCD", 
+    "categories": 1
+}

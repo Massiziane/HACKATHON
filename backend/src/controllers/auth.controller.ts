@@ -46,7 +46,7 @@ export const signIn = async (req: Request<{}, {}, SignInRequest>, res: Response)
     }
 
     try{
-        const user = prisma.user.findUnique({ where : { email } });
+        const user = await prisma.user.findUnique({ where : { email } });
         if(!user) { 
             return res.status(404).json({message : "Utilisateur introuvable"})
         };
