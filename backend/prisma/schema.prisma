@@ -12,3 +12,114 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+
+model User {
+		id				String @id @default(cuid())
+		email     String @unique
+		password  String
+		firstName String
+		lastName  String
+		role      Role   @default(etudiant)
+		
+		formations Formation[]
+		cours      Cours[]     @relation("TeacherCours") // ajouté relation inverse
+		lecons     Lecon[]     @relation("TeacherLecon") // ajouté relation inverse
+		quizzes    Quiz[] // un utilisateur peut avoir plusieurs quiz
+		
+		createdAt  DateTime @default(now())
+		modifiedAt DateTime @updatedAt
+}
+ 
+enum Role {
+		admin
+		enseignant
+		etudiant
+}
+ 
+model Categorie {
+		id    String  @id @default(cuid())
+		name  String  @unique
+		cours Cours[]
+		
+		formations Formation[] @relation("FormationCategories")
+}
+ 
+model Formation {
+		id          String  @id @default(cuid())
+		title       String
+		description String?
+		
+		teacherId String
+		teacher   User   @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+		
+		cours Cours[]
+		
+		inheritedCategories Categorie[] @relation("FormationCategories")
+		
+		createdAt  DateTime @default(now())
+		modifiedAt DateTime @updatedAt
+}
+ 
+model Cours {
+  id          String  @id @default(cuid())
+  title       String
+  description String?
+ 
+  teacherId String
+  teacher   User   @relation("TeacherCours", fields: [teacherId], references: [id], onDelete: Cascade)
+ 
+  formationId String? // ← devient nullable
+  formation   Formation? @relation(fields: [formationId], references: [id], onDelete: SetNull)
+  // ← ne supprime pas les cours, met juste null
+ 
+  categorieId String
+  categorie   Categorie @relation(fields: [categorieId], references: [id], onDelete: Restrict)
+ 
+  lecons Lecon[]
+ 
+  createdAt  DateTime @default(now())
+  modifiedAt DateTime @updatedAt
+}
+ 
+model Lecon {
+  id          String  @id @default(cuid())
+  title       String
+  description String?
+  body        String?
+ 
+  teacherId String
+  teacher   User   @relation("TeacherLecon", fields: [teacherId], references: [id], onDelete: Cascade)
+ 
+  coursId String
+  cours   Cours  @relation(fields: [coursId], references: [id], onDelete: Cascade)
+ 
+  quiz   Quiz?   @relation("LeconQuiz", fields: [quizId], references: [id])
+  quizId String? @unique // garantit 1 quiz max par lecon
+}
+ 
+model Quiz {
+  id          String  @id @default(cuid())
+  title       String
+  description String?
+ 
+  teacherId String
+  teacher   User   @relation(fields: [teacherId], references: [id])
+ 
+  lecon Lecon? @relation("LeconQuiz") // opposé pour Lecon.quiz
+ 
+  questions Question[]
+ 
+  createdAt  DateTime @default(now())
+  modifiedAt DateTime @updatedAt
+}
+ 
+model Question {
+  id      String   @id @default(cuid())
+  text    String
+  options String[]
+  answer  String
+ 
+  quizId String
+  quiz   Quiz   @relation(fields: [quizId], references: [id], onDelete: Cascade)
+}
