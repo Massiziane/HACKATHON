@@ -1,3 +1,4 @@
+
 import type { Request, Response } from 'express';
 import prisma from '../prisma/client.js';
 import type User from '../types/user.type.js';
