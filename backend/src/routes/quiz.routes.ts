@@ -14,7 +14,7 @@ const router = Router();
 
 // Routes publiques
 
-router.get("/:id", getQuizById);      // Lire un quiz spécifique
+router.get("/:id", getQuizById);    
 
 // Routes protégées → enseignants ou admin seulement
 router.post(
