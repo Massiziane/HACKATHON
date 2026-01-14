@@ -7,6 +7,8 @@ import leconRoutes from './routes/lecon.routes.js';
 import coursRoutes from './routes/cours.routes.js';
 import quizRoutes from './routes/quiz.routes.js';
 import { authMiddleware } from './middleware/auth.middleware.js';
+import questionRoutes from './routes/question.routes.js';
+
 
 
 
@@ -30,6 +32,9 @@ app.use('/formations', authMiddleware, formationRoutes);
 app.use('/lecons', authMiddleware, leconRoutes);
 app.use('/cours', authMiddleware, coursRoutes);
 app.use("/quiz", quizRoutes);
+app.use("/questions", questionRoutes);
+app.use("/response", questionRoutes);
+
 
 
 
