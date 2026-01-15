@@ -20,7 +20,17 @@ Content-Type: application/json
   "password": "password123",
   "role": "admin"
 }
+### sign up / create user mentor
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
 
+{
+  "firstName": "admin",
+  "lastName": "admin",
+  "email": "admint@test.com",
+  "password": "password123",
+  "role": "admin"
+}
 ### "message": "Utilisateur existe deja"
 POST http://localhost:3000/auth/signup
 Content-Type: application/json

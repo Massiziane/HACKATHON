@@ -35,6 +35,7 @@ app.use("/quiz", quizRoutes);
 app.use("/questions", questionRoutes);
 app.use("/response", responseRoutes);
 app.use("/categories", authMiddleware, categoryRoutes);
+app.use("/lecons", authMiddleware, leconRoutes);
 
 
 export default app;
