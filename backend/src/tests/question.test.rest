@@ -1,0 +1,25 @@
+@baseUrl = http://localhost:3000
+
+POST {{baseUrl}}/questions
+Content-Type: application/json
+
+{
+  "text": "Qu’est-ce que Node.js ?",
+  "quizId": "cmkfkgrb90009vci884zo029d"
+}
+
+
+### get question by quiz
+GET {{baseUrl}}/questions/quiz/cmkfkgrb90009vci884zo029d
+
+
+### update a question
+PUT {{baseUrl}}/questions/cmkfkkk3c000avci84f2tj5c4
+Content-Type: application/json
+
+{
+  "text": "Node.js est-il un langage ou un runtime ?"
+}
+
+### delete a question
+DELETE {{baseUrl}}/questions/QUESTION_ID_HERE

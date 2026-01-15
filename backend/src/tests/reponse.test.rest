@@ -1,0 +1,28 @@
+@baseUrl = http://localhost:3000
+
+### HTTP/1.1 201 Created
+POST {{baseUrl}}/reponse
+Content-Type: application/json
+
+{
+  "text": "Node.js est un runtime JavaScript",
+  "bonneReponse": true,
+  "questionID": "cmkfkkk3c000avci84f2tj5c4"
+}
+
+
+### get response by question
+GET {{baseUrl}}/reponse/question/cmkfkkk3c000avci84f2tj5c4
+
+### update reponse
+
+PUT {{baseUrl}}/reponse/cmkfkp60a000bvci8rvjxi3ok
+Content-Type: application/json
+
+{
+  "text": "Node.js est un runtime JavaScript côté serveur",
+  "bonneReponse": true
+}
+
+### Delete reponse
+DELETE {{baseUrl}}/reponses/REPONSE_ID_HERE

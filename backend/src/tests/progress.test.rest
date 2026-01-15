@@ -1,0 +1,41 @@
+@baseUrl = http://localhost:3000
+@tokenAdmin = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQ4OTI0NiwiZXhwIjoxNzY4NTAwMDQ2fQ.LH20wWie2GtyflzJ-vlIXg31KPlldYEzlSrL62NCc6s
+@tokenTeacher = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2ZrOHYzZjAwMDZ2Y2k4cG9sYnh5eTEiLCJlbWFpbCI6InByb2ZAdGVzdC5jb20iLCJyb2xlIjoiZW5zZWlnbmFudCIsImlhdCI6MTc2ODQ4OTQ0OCwiZXhwIjoxNzY4NTAwMjQ4fQ.CjuLqzBnhG5Jud5N6_0DMXBi-_aU6_8n3yIHKuOM-8U
+@tokenStudent = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VqeWp4cDAwMDBvOGk4ZGdvNXAwYWsiLCJlbWFpbCI6ImplYW4uZHVwb250QHRlc3QuY29tIiwicm9sZSI6ImV0dWRpYW50IiwiaWF0IjoxNzY4NDg5MjIyLCJleHAiOjE3Njg1MDAwMjJ9.GrjtM3BugjPu7Q_90-hkwA6-kk4DknrGRS10SUduNfQ
+
+
+@studentId = cmkejyjxp0000o8i8dgo5p0ak
+@otherStudentId = cmkefxoa30001c8i8o0d2jwlq
+@coursId = cmkfk0ncw0004vci8sshrzc4a
+@progressId = PROGRESS_ID_HERE
+
+
+### intiate a progress
+POST {{baseUrl}}/progress
+Authorization: Bearer {{tokenTeacher}}
+Content-Type: application/json
+
+{
+  "studentId": "{{studentId}}",
+  "coursId": "{{coursId}}"
+}
+
+
+### get all progresses 
+GET {{baseUrl}}/progress/{{studentId}}
+Authorization: Bearer {{tokenStudent}}
+
+
+### complete a cours
+POST {{baseUrl}}/progress/complete
+Authorization: Bearer {{tokenStudent}}
+Content-Type: application/json
+
+{
+  "studentId": "{{studentId}}",
+  "coursId": "{{coursId}}"
+}
+
+### delete a progress
+DELETE {{baseUrl}}/progress/{{progressId}}
+Authorization: Bearer {{tokenAdmin}}

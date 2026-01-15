@@ -11,7 +11,7 @@ export const getProgressForStudent = async (req: Request, res: Response) => {
     }
 
     const progresses = await prisma.progress.findMany({
-      where: { studentId },
+      where: { studentId : studentId as string },
       include: { cours: true },
     });
 
@@ -22,7 +22,6 @@ export const getProgressForStudent = async (req: Request, res: Response) => {
   }
 };
 
-// CREATE / INIT progress for a course
 export const createProgress = async (req: Request, res: Response) => {
   const { studentId, coursId } = req.body;
 
@@ -34,16 +33,29 @@ export const createProgress = async (req: Request, res: Response) => {
     const progress = await prisma.progress.create({
       data: { studentId, coursId },
     });
-
     res.status(201).json(progress);
   } catch (error: any) {
-    if (error.code === 'P2002') {
-      return res.status(409).json({ message: "Progression déjà existante pour cet étudiant et cours" });
-    }
     console.error(error);
+
+    // Duplicate progress
+    if (error.code === "P2002") {
+      return res.status(409).json({
+        message: "Progression déjà existante pour cet étudiant et cours",
+      });
+    }
+
+    // Foreign key violation
+    if (error.code === "P2003") {
+      return res.status(400).json({
+        message: "Student ou Cours inexistant",
+        details: error.meta, // debugging
+      });
+    }
+
     res.status(500).json({ message: "Erreur serveur" });
   }
 };
+
 
 // MARK course as completed
 export const completeProgress = async (req: Request, res: Response) => {
@@ -71,7 +83,7 @@ export const deleteProgress = async (req: Request, res: Response) => {
   }
 
   try {
-    await prisma.progress.delete({ where: { id } });
+    await prisma.progress.delete({ where: { id: id as string } });
     res.status(200).json({ message: "Progression supprimée" });
   } catch (error) {
     console.error(error);

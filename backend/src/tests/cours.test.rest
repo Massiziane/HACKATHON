@@ -1,0 +1,47 @@
+@baseUrl = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQ4NzYzNywiZXhwIjoxNzY4NDk4NDM3fQ.neCMNHTtl6qgc1kTHa1UsgqioxMtAA9j7xDaQYt4dH0
+
+### =========================
+### CREATE COURS (admin / enseignant)
+### =========================
+POST {{baseUrl}}/cours
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Introduction à TypeScript",
+  "description": "Cours de base sur TypeScript",
+  "categorieId": "cmkekx0nj0000oki8rt33k1q7",
+  "formationId": "cmkfk06jt0003vci8wcvpxz04"
+}
+
+### =========================
+### GET ALL COURS
+### =========================
+GET {{baseUrl}}/cours
+Authorization: Bearer {{token}}
+
+### =========================
+### GET COURS BY ID
+### =========================
+GET {{baseUrl}}/cours/cmkfk0ncw0004vci8sshrzc4a
+Authorization: Bearer {{token}}
+
+### =========================
+### UPDATE COURS (admin / owner enseignant)
+### =========================
+PUT {{baseUrl}}/cours/cmkfk0ncw0004vci8sshrzc4a
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "TypeScript Avancé",
+  "description": "Types avancés, generics, decorators",
+  "formationId": null
+}
+
+### =========================
+### DELETE COURS (admin / owner enseignant)
+### =========================
+DELETE {{baseUrl}}/cours/cmkfk1yv30005vci8fb559vdr
+Authorization: Bearer {{token}}
