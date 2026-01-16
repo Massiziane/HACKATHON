@@ -1,0 +1,40 @@
+@baseUrl = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQ4NzYzNywiZXhwIjoxNzY4NDk4NDM3fQ.neCMNHTtl6qgc1kTHa1UsgqioxMtAA9j7xDaQYt4dH0
+
+POST {{baseUrl}}/formations
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Formation Développement Web",
+  "description": "Formation complète backend & frontend",
+  "categories": [
+    "cmkekx0nj0000oki8rt33k1q7"
+  ]
+}
+
+### get all formation / module
+GET {{baseUrl}}/formations
+Authorization: Bearer {{token}}
+
+### get formation by id
+GET {{baseUrl}}/formations/cmkfk06jt0003vci8wcvpxz04
+Authorization: Bearer {{token}}
+
+### update formation
+PUT {{baseUrl}}/formations/cmkfk06jt0003vci8wcvpxz04
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Formation Web Avancée",
+  "description": "Node.js, Prisma, React"
+}
+
+### error test
+POST {{baseUrl}}/formations
+Content-Type: application/json
+
+{
+  "title": "Formation refusée"
+}
