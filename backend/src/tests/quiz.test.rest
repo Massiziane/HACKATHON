@@ -1,0 +1,33 @@
+@baseUrl = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2ZrOHYzZjAwMDZ2Y2k4cG9sYnh5eTEiLCJlbWFpbCI6InByb2ZAdGVzdC5jb20iLCJyb2xlIjoiZW5zZWlnbmFudCIsImlhdCI6MTc2ODQ4ODI4MCwiZXhwIjoxNzY4NDk5MDgwfQ.eV4w0FmgKIRj368UkNTdRRHHADNsW-WpJzpBu0eZip4
+
+
+### HTTP/1.1 201 Created
+POST {{baseUrl}}/quiz
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Quiz Node.js",
+  "description": "Vérification des connaissances Node.js",
+  "leconId": "cmkfkaes60007vci8cemnxs9d"
+}
+
+### get quiz by id : HTTP/1.1 200 OK
+GET {{baseUrl}}/quiz/cmkfkgrb90009vci884zo029d
+Authorization: Bearer {{token}}
+
+
+### update Quiz : 
+PUT {{baseUrl}}/quiz/cmkfkgrb90009vci884zo029d
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Quiz Node.js Avancé",
+  "description": "Event loop, async, streams"
+}
+
+### delete a quiz 
+DELETE {{baseUrl}}/quizzes/QUIZ_ID_HERE
+Authorization: Bearer {{token}}
