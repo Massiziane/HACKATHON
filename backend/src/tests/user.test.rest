@@ -1,11 +1,116 @@
-### sign in / create user
+### sign up / create user
 POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-  "firstName": "Alice",
-  "lastName": "Student",
-  "email": "alice@student.com",
+  "firstName": "Jean",
+  "lastName": "Dupont",
+  "email": "jean.dupont@test.com",
   "password": "password123",
   "role": "etudiant"
 }
+### sign up / create user admin 
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "firstName": "admin",
+  "lastName": "admin",
+  "email": "admint@test.com",
+  "password": "password123",
+  "role": "admin"
+}
+### sign up / create user mentor
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "firstName": "admin",
+  "lastName": "admin",
+  "email": "admint@test.com",
+  "password": "password123",
+  "role": "admin"
+}
+### "message": "Utilisateur existe deja"
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "firstName": "Jean",
+  "lastName": "Dupont",
+  "email": "jean.dupont@test.com",
+  "password": "password123",
+  "role": "etudiant"
+}
+
+###  "message": "Tous les champs sont obligatoires"
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "email": "x@test.com"
+}
+
+### HTTP/1.1 200 OK
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+  "email": "jean.dupont@test.com",
+  "password": "password123"
+}
+
+### HTTP/1.1 200 OK
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+  "email": "admint@test.com",
+  "password": "password123"
+}
+
+###   "message": "Mot de passe incorrect"
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+  "email": "jean.dupont@test.com",
+  "password": "wrongpass"
+}
+
+### Sign in — utilisateur inexistant
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+  "email": "nope@test.com",
+  "password": "password123"
+}
+
+### HTTP/1.1 200 OK get all users with an admin's token
+GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQyNzU1NSwiZXhwIjoxNzY4NDM4MzU1fQ.t2zui4c480kXPS1bJkgr-hfFHWcr-XB7f7GVBcfDW8o
+
+### get all users by a student :   "message": "Accès refusé — vous ne pouvez pas acceder aux ressources de ce type"
+GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VqeWp4cDAwMDBvOGk4ZGdvNXAwYWsiLCJlbWFpbCI6ImplYW4uZHVwb250QHRlc3QuY29tIiwicm9sZSI6ImV0dWRpYW50IiwiaWF0IjoxNzY4NDI3Nzg1LCJleHAiOjE3Njg0Mzg1ODV9.je8CvikB-z0Xj5ZL597bQgv_Yn1_HBB28Y3W8QEfAlQ
+
+
+### STUDENT update his own account : HTTP/1.1 200 OK
+PUT http://localhost:3000/users/cmkejyjxp0000o8i8dgo5p0ak
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VqeWp4cDAwMDBvOGk4ZGdvNXAwYWsiLCJlbWFpbCI6ImplYW4uZHVwb250QHRlc3QuY29tIiwicm9sZSI6ImV0dWRpYW50IiwiaWF0IjoxNzY4NDI3OTU0LCJleHAiOjE3Njg0Mzg3NTR9.Lgzup3Co9TtxTLUueEeCK1Z5J7hA3DXnfYrGI87JBYg
+Content-Type: application/json
+
+{
+  "firstName": "JeanUpdated"
+}
+
+### modifie un etudiant par un admin(token) HTTP/1.1 200 OK
+PUT http://localhost:3000/users/cmkejyjxp0000o8i8dgo5p0ak
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQyODI1MiwiZXhwIjoxNzY4NDM5MDUyfQ.lXCuAPIjQILkBl6wIDDOASK-xFTtKRcsc7I3ul7OL2w
+Content-Type: application/json
+
+{
+  "firstName": "AdminEdit"
+}
+

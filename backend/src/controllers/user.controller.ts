@@ -1,7 +1,7 @@
 
 import type { Request, Response } from 'express';
 import prisma from '../prisma/client.js';
-import type User from '../types/user.type.js';
+
 
 
 
@@ -25,7 +25,7 @@ export async function getAllUsers(req: Request, res: Response) {
 }
 
 // Lire un utilisateur
-export async function getUserById(req: Request<User>, res: Response) {
+export async function getUserById(req: Request, res: Response) {
     const { id } = req.params;
     if (!id) return res.status(400).json({message : "ID manquant"});
 
@@ -35,7 +35,7 @@ export async function getUserById(req: Request<User>, res: Response) {
         }
 
         const user = await prisma.user.findUnique({
-            where : { id },
+            where : { id: id as string },
             select: { id : true, email: true, firstName: true, lastName: true, role: true }
         })
 
@@ -48,19 +48,21 @@ export async function getUserById(req: Request<User>, res: Response) {
 }
 
 
-export async function updateUser(req: Request<User>, res: Response) {
+export async function updateUser(req: Request, res: Response) {
     const { id } = req.params;
     if (!id) return res.status(400).json({message : "ID manquant"});
 
 
     // admin seulement peut modifier
-    if(req.user!.role === "admin" && req.user!.id !== id) {
-        return res.status(403).json({ message: "Accès refusé — vous ne pouvez modifier que votre profil" });
+    if (req.user!.role !== "admin" && req.user!.id !==  id) {
+        return res.status(403).json({
+            message: "Accès refusé — droits insuffisants"
+        });
     }
 
     try {
         const updated = await prisma.user.update({
-            where : { id },
+            where : { id: id as string },
             data : req.body,
             select: { id : true, email: true, firstName: true, lastName: true, role: true }
         });
@@ -72,22 +74,19 @@ export async function updateUser(req: Request<User>, res: Response) {
     }
 }
 
-export async function deleteUser(req: Request<User>, res: Response) {
+export async function deleteUser(req: Request, res: Response) {
     const { id } = req.params;
     if (!id) return res.status(400).json({message : "ID manquant"});
 
     // admin seulement peut modifier
-    if(req.user!.role === "admin" && req.user!.id !== id) {
-        return res.status(403).json({ message: "Accès refusé — vous ne pouvez modifier que votre profil" });
+    if (req.user!.role !== "admin" && req.user!.id !== id) {
+        return res.status(403).json({ message: "Accès refusé — droits insuffisants" });
     }
-
     try {
-        await prisma.user.delete({ where : { id } });
+        await prisma.user.delete({ where : { id: id as string } });
         res.status(200).json({ message : "Utilisateur supprimé" });
     } catch(error) {
         console.error(error);
         res.status(500).json({ message : "Erreur serveur"});
     }
 }
-
-
