@@ -89,7 +89,7 @@ Content-Type: application/json
 
 ### HTTP/1.1 200 OK get all users with an admin's token
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQyNzU1NSwiZXhwIjoxNzY4NDM4MzU1fQ.t2zui4c480kXPS1bJkgr-hfFHWcr-XB7f7GVBcfDW8o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODU5NDAyMiwiZXhwIjoxNzY4NjA0ODIyfQ.5Jp98lSbyfy8_Qmk3ymXJtP9jQ4yXDmmzMAoRSx8soI
 
 ### get all users by a student :   "message": "Accès refusé — vous ne pouvez pas acceder aux ressources de ce type"
 GET http://localhost:3000/users
