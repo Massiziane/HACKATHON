@@ -41,12 +41,12 @@ export const signUp = async (req: Request<{}, {}, SignUpRequest>, res: Response)
 // sign in user
 
 export const signIn = async (req: Request<{}, {}, SignInRequest>, res: Response) => {
-				const {email, password} = req.body;
+    const { email, password } = req.body;
 
-				// sign in requirements
-				if (!email || !password) {
-								return res.status(400).json({message: "Email et mot de passe sont obligatoires"});
-				}
+    // sign in requirements
+    if(!email || !password) {
+        return res.status(400).json({message : "Email et mot de passe sont obligatoires"});
+    }
 
     try{
         const user = await prisma.user.findUnique({ where : { email } });
@@ -54,21 +54,21 @@ export const signIn = async (req: Request<{}, {}, SignInRequest>, res: Response)
             return res.status(404).json({message : "Utilisateur introuvable"})
         };
 
-								// compare password (hashage)
-								const validPassword = await ComparePassword(password, user.password);
-								if (!validPassword) {
-												return res.status(401).json({message: "Mot de passe incorrect"});
-								}
+        // compare password (hashage)
+        const validPassword = await ComparePassword(password, user.password);
+        if(!validPassword) { 
+            return res.status(401).json({message : "Mot de passe incorrect"});
+        }
 
-								const token = generateToken({
-												id: user.id,
-												email: user.email,
-												role: user.role
-								});
+        const token = generateToken({ 
+            id: user.id, 
+            email: user.email, 
+            role: user.role
+        });
 
-								return res.status(200).json({user, token});
+        return res.status(200).json({ user, token });
 
-				} catch (error) {
-								return res.status(500).json({message: "Erreur serveur"});
-				}
+    }catch(error) {
+        return res.status(500).json({ message : "Erreur serveur"});
+    }
 };
