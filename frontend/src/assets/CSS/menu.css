@@ -99,6 +99,17 @@
 }
 
 
+.SVGLink {
+				color:white;
+				width: 24px;
+				/* Allows us to align the SVG with the other elements in the menu */
+	text-decoration: none;
+				display: inline;
+		font-size: 0;
+				vertical-align: text-top;
+}
+
+
 /* This format styles all <ul> elements within the element with the class "navBar". */
 .navBar ul {
 		/* This removes the bullets of a bullet list. */
@@ -243,7 +254,9 @@
     display: block;
 }
 
-.submenu-content2 a:hover {background-color: #02c042}
+.submenu-content2 a:hover {
+background-color: #02c042
+}
 
 .submenu2:hover .submenu-content2 {
     display: block;
