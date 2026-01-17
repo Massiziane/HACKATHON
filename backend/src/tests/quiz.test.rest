@@ -1,33 +1,27 @@
-@baseUrl = http://localhost:3000
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2ZrOHYzZjAwMDZ2Y2k4cG9sYnh5eTEiLCJlbWFpbCI6InByb2ZAdGVzdC5jb20iLCJyb2xlIjoiZW5zZWlnbmFudCIsImlhdCI6MTc2ODQ4ODI4MCwiZXhwIjoxNzY4NDk5MDgwfQ.eV4w0FmgKIRj368UkNTdRRHHADNsW-WpJzpBu0eZip4
-
-
-### HTTP/1.1 201 Created
-POST {{baseUrl}}/quiz
-Authorization: Bearer {{token}}
+### POST formation
+POST http://localhost:3000/lecon
 Content-Type: application/json
 
 {
-  "title": "Quiz Node.js",
-  "description": "Vérification des connaissances Node.js",
-  "leconId": "cmkfkaes60007vci8cemnxs9d"
+    "title": "HDasdF",  
+    "description": "FSdsD", 
+    "leconID": 2355
 }
 
-### get quiz by id : HTTP/1.1 200 OK
-GET {{baseUrl}}/quiz/cmkfkgrb90009vci884zo029d
-Authorization: Bearer {{token}}
 
+### get quiz by id
+GET http://localhost:3000/quiz/cmkekx0nj0000oki8rt33k1q7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQyODc2OCwiZXhwIjoxNzY4NDM5NTY4fQ.5rmQ9S4nF6oGPl4vWhS9t99oksfUrPz9_evV4z-O9B0
 
-### update Quiz : 
-PUT {{baseUrl}}/quiz/cmkfkgrb90009vci884zo029d
-Authorization: Bearer {{token}}
+### update quiz by an admin 
+POST http://localhost:3000/quiz
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQyODc2OCwiZXhwIjoxNzY4NDM5NTY4fQ.5rmQ9S4nF6oGPl4vWhS9t99oksfUrPz9_evV4z-O9B0
 Content-Type: application/json
 
 {
-  "title": "Quiz Node.js Avancé",
-  "description": "Event loop, async, streams"
+  "name": "Nouvelle catégorie"
 }
 
-### delete a quiz 
-DELETE {{baseUrl}}/quizzes/QUIZ_ID_HERE
-Authorization: Bearer {{token}}
+### delete quiz by admin : HTTP/1.1 200 OK
+DELETE http://localhost:3000/quiz/cmkekz74n0003oki8c29ps2e3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQyODc2OCwiZXhwIjoxNzY4NDM5NTY4fQ.5rmQ9S4nF6oGPl4vWhS9t99oksfUrPz9_evV4z-O9B0
