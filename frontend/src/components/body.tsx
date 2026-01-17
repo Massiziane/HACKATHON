@@ -1,6 +1,8 @@
 
 import {useState, React} from 'react';
-import '../assets/CSS/styleindex.css';
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 
 /*
@@ -13,7 +15,7 @@ type Props = {
 };
 
 //
-export const MainContent = ({children}: Props) => {
+export const = Body({children}: Props) => {
 				const [count, setCount] = useState(0)
 
 				return (
@@ -26,6 +28,8 @@ export const MainContent = ({children}: Props) => {
 																</div>
 												</div>
 								</>
-				);
-};
+				)
+}
+
+export default App
 
