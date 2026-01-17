@@ -1,39 +1,42 @@
-import type { Request, Response } from "express";
+
+import type {Request, Response} from "express";
 import prisma from '../prisma/client.js';
-import { HashPassword, ComparePassword } from "../utils/hashpassword.js";
-import { generateToken } from "../utils/jwt.js";
-import type { SignUpRequest, SignInRequest } from "../types/auth.types.js";
+import {HashPassword, ComparePassword} from "../utils/hashpassword.js";
+import {generateToken} from "../utils/jwt.js";
+import type {SignUpRequest, SignInRequest} from "../types/auth.types.js";
 
 // create a user
 export const signUp = async (req: Request<{}, {}, SignUpRequest>, res: Response) => {
-    const { firstName, lastName, email, password, role } = req.body;
+				const {firstName, lastName, email, password, role} = req.body;
 
-    if(!firstName || !lastName || !email || !password || !role) {
-        return res.status(400).json({message : "Tous les champs sont obligatoires"});
-    }
+				if (!firstName || !lastName || !email || !password || !role) {
+								return res.status(400).json({message: "Tous les champs sont obligatoires"});
+				}
 
-    try {
-        // verification si l'utilisateur existe via email : unique dans la db
-        const existingUser = await prisma.user.findUnique({ where : { email } });
+				try {
+								// verification si l'utilisateur existe via email : unique dans la db
+								const existingUser = await prisma.user.findUnique({where: {email}});
 
-        if(existingUser) { return res.status(400).json({message : "Utilisateur existe deja"})};
+								if (existingUser) {return res.status(400).json({message: "Utilisateur existe deja"})};
 
-        const hashedPassword = await HashPassword(password);
-        const user = await prisma.user.create({
-            data : {    firstName, 
-                        lastName, 
-                        email, 
-                        password: hashedPassword, 
-                        role },
-        })
+								const hashedPassword = await HashPassword(password);
+								const user = await prisma.user.create({
+												data: {
+																firstName,
+																lastName,
+																email,
+																password: hashedPassword,
+																role
+												},
+								})
 
-        const { password: _, ...userWithoutPassword } = user;
+								const {password: _, ...userWithoutPassword} = user;
 
-        return res.status(201).json({ user : userWithoutPassword });
-    }catch(error) {
-        return res.status(500).json({ message : "Erreur serveur"});
-    }
-} ;
+								return res.status(201).json({user: userWithoutPassword});
+				} catch (error) {
+								return res.status(500).json({message: "Erreur serveur"});
+				}
+};
 
 // sign in user
 
