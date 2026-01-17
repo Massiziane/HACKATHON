@@ -2,11 +2,30 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import AuthPage from "./pages/AuthPage.jsx";
+import CataloguePage from "./pages/CataloguePage.jsx";
+import PathDetailPage from "./pages/PathDetailPage.jsx";
+import NotFound from "./pages/NotFound.jsx";
+
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
+        <Layout>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/auth" element={<AuthPage />} />
+        <Route path="/catalogue" element={<CataloguePage />} />
+        <Route path="/parcours/:id" element={<PathDetailPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Layout>
+  );
     <>
       <div>
         <a href="https://vite.dev" target="_blank">
@@ -31,5 +50,6 @@ function App() {
     </>
   )
 }
+
 
 export default App
