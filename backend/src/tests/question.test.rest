@@ -1,25 +1,25 @@
-@baseUrl = http://localhost:3000
-
-POST {{baseUrl}}/questions
+### POST formation
+POST http://localhost:3000/lecon
 Content-Type: application/json
 
 {
-  "text": "Qu’est-ce que Node.js ?",
-  "quizId": "cmkfkgrb90009vci884zo029d"
+    "text": "HDasdF sjsaid ffkskd fkfkwk",  
+    "quizID": 2355
 }
 
+### get all question 
+GET http://localhost:3000/question
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQyODc2OCwiZXhwIjoxNzY4NDM5NTY4fQ.5rmQ9S4nF6oGPl4vWhS9t99oksfUrPz9_evV4z-O9B0
 
-### get question by quiz
-GET {{baseUrl}}/questions/quiz/cmkfkgrb90009vci884zo029d
-
-
-### update a question
-PUT {{baseUrl}}/questions/cmkfkkk3c000avci84f2tj5c4
+### update question by an admin 
+POST http://localhost:3000/question
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQyODc2OCwiZXhwIjoxNzY4NDM5NTY4fQ.5rmQ9S4nF6oGPl4vWhS9t99oksfUrPz9_evV4z-O9B0
 Content-Type: application/json
 
 {
-  "text": "Node.js est-il un langage ou un runtime ?"
+  "name": "Nouvelle catégorie"
 }
 
-### delete a question
-DELETE {{baseUrl}}/questions/QUESTION_ID_HERE
+### delete question by admin : HTTP/1.1 200 OK
+DELETE http://localhost:3000/question/cmkekz74n0003oki8c29ps2e3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQyODc2OCwiZXhwIjoxNzY4NDM5NTY4fQ.5rmQ9S4nF6oGPl4vWhS9t99oksfUrPz9_evV4z-O9B0
