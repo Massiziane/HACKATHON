@@ -17,7 +17,7 @@ function App() {
 				const [count, setCount] = useState(0);
 				/*
 					* Aucune des pages de Saad ne compile et render.
-					* L'application est 
+					* L'application est pr/sentement incapable d'utiliser ses pages
 					* 
 																				<Routes>
 																								<Route path="/" element={<HomePage />} />
