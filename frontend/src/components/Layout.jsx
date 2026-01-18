@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import NavItem from "./NavItem.jsx";
+import NavItem from "./NavItem.tsx";
 
 export default function Layout({ children }) {
   const location = useLocation();
