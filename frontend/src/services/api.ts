@@ -5,9 +5,9 @@
 	*/
 
 import {API_URL} from "../config"
-import type {Student, Club} from "../types/types";
+import type {User, Categorie, Formation, Cours, Question, Reponse} from "../types/types";
 
-export const createStudent = async (student: Omit<Student, 'id' | "createdAt">): Promise<Student> => {
+export const createStudent = async (student: Omit<User, 'id' | "createdAt">): Promise<User> => {
 				const res = await fetch(`${API_URL}/etudiants`, {
 								method: 'POST',
 								headers: {
