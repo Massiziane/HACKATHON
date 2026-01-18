@@ -1,0 +1,487 @@
+/*	This format styles all elements with the property "controls", which would be all video and audio
+*	[controls] {
+	color: magenta;
+}
+*	
+*	The format can be further narrowed down to a value for a specific attribute by using the format "tag[property=value]" like below
+*	img[src="images/Mass_Effect.png"] {
+	margin-top:5%;
+    margin-left: auto;
+    margin-right: auto;
+    border:none;
+}
+*	
+*	The scope of the attribute selected can vary depending on optional modifiers:
+*	[attribute=value]		[target="_blank"]			Selects all elements with target="_blank"
+*	[attribute~=value]		[title~="flower"]			Selects all elements with a title attribute containing the word "flower"
+*	[attribute|=value]		[lang|="en"]					Selects all elements with a lang attribute value starting with "en"
+*	[attribute^=value] 	a[href^="https"]			Selects every <a> element whose href attribute value begins with "https"
+*	[attribute$=value] 	a[href$=".pdf"]				Selects every <a> element whose href attribute value ends with ".pdf"
+*	[attribute*=value] 	a[href*="w3schools"] 	Selects every <a> element whose href attribute value contains the substring "w3schools"
+*	
+*	
+*	
+*	
+*	
+*	
+*	Styling of an element is determined by the most specific style to the least specific style.
+*	The most specific style takes priority over all the other style, then the next most specific, so on and so forth.
+*	From most specific to least specifc, or most important to least important, here is the order of styling priority:
+*	
+*	inlineStyle => ID => Class => Property => Tag => InheritedStyling
+*	
+*	The special declaration "!important" overrides ANY style, no matter how specific.
+*	The declaration can be used when working with multiple stylesheet, for example when using the Bootstrap.css framework, we can use the "!important" declaration to override the styling Bootstrap gives to certain elements.
+*	p {
+	color: blue !important;
+}
+*	
+*	
+*	
+*	
+*	
+*	
+*	The fonts in CSS are determined by the Typeface (https://en.wikipedia.org/wiki/Typeface), AKA the "font-family" property.
+*	Fonts must be installed on a user's computer or downloaded with the website. Web safe fonts are fonts that are supported across most browsers and operating systems.
+*	To access a font with a name consisting of more than 1 word, you must use quotation marks:
+*	h1 {
+  font-family: 'Courier New';
+}
+*	
+*	
+*	
+*	
+*	
+*	
+*	By default, in the HTML box-model, the total width of an object follows the below formula:
+*	width + padding + border-width
+*	
+*	For example, if an object has a width of 200px, a padding of 10px and a border of 1px, the REAL width of the object is 212px.
+*	To change this, we must change to the box-sizing model "border-box".
+*	* {
+  box-sizing: border-box;
+}
+*	
+*	Now the total width would be 200px, INCLUDING the padding and border.
+*/
+
+/* This format styles all <a> elements within the element with the class="navBar"*/
+.navBar a {
+		color:white;
+		text-decoration: none;
+		text-align: center;
+}
+
+
+.navBar {
+		background-color:#009641;
+		color:white;
+		/* This makes the navigation bar stick to a position once the page scrolls past it. */
+		position: sticky;
+		/* Makes the navigation bar stick to the top */
+		top: 0;
+		/* This makes the navigation bar as wide as the page. */
+		min-width: 100%;
+		/* This makes the navigation bar go on top of all other elements. */
+		z-index: 1;
+		/* Displays the element as an inline block container. */
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+		border-width: 0;
+		font-family: Arial, Helvetica, sans-serif;
+		/* The element is semi-transparent. */
+		opacity: 0.9;
+		/* Prevents text selection	*/
+		-webkit-user-select: none; /* Safari */
+		-ms-user-select: none; /* IE 10 and IE 11 */
+		user-select: none; /* Standard syntax */
+}
+
+
+.SVGLink {
+				color:white;
+				width: 24px;
+				/* Allows us to align the SVG with the other elements in the menu */
+	text-decoration: none;
+				display: inline;
+		font-size: 0;
+				vertical-align: text-top;
+}
+
+
+/* This format styles all <ul> elements within the element with the class "navBar". */
+.navBar ul {
+		/* This removes the bullets of a bullet list. */
+		list-style-type: none;
+		/* This removes padding and margins between elements. */
+		margin: 0;
+		padding: 0;
+		/* Content that is too big to fit is clipped and invisible. */
+		overflow: hidden;
+		/*Removes the whitespace-only text nodes between blocks in the inline element <ul>*/
+		font-size: 0;
+
+}
+
+.navBar li {
+		display:inline-block;
+		margin: 0;
+		padding: 0;
+		/*Restores the default size of text*/
+		font-size: medium;
+}
+
+/* This format styles using EITHER the tag OR the class property. */
+.navBar li a, .mbutton, .mbutton2 {
+		display: inline-block;
+		color: white;
+		/* Aligns the text and elements at the center of the INLINE-BLOCK. */
+		text-align: center;
+		/* 
+			Determines the padding of the inline-block.
+			With 2 values:
+			 - Top and Bottom paddings are 14px
+			 - Right and Left paddings are 16px
+		*/
+		padding: 14px 16px;
+		/* Removes the underline of Hyperlinks */
+		text-decoration: none;
+		/* Creates a transition, in seconds, for the specified properties, separated by a comma. */
+		transition: background-color .5s, color .5s;
+		height: 50px;
+}
+
+/* When the javascript event "hover" occurs on the elements (also known as a "pseudo-class"), the following style is applied. */
+.navBar ul li a:hover, .submenu:hover .mbutton, .submenu2:hover .mbutton2 {
+		/* Change background colour. */
+		background-color: #02c042;
+		transition: background-color .5s;
+}
+
+/* 
+	When the javascript event "hover" occurs on the elements, the following style is applied.
+	This is separate so that only when the specific element is hovered does it apply
+*/
+.navBar ul li a:hover, .submenu:hover, .mbutton:hover, .submenu2:hover, .mbutton2:hover {
+		/* Change font colour. */
+		color: #1e0d0b;
+		transition: color .5s;
+		/* Changes the cursor to the link cursor */
+		cursor: pointer;
+}
+
+/* When a link is clicked on, apply this style	*/
+.navBar ul li a:active, .mbutton:active, .mbutton2:active {
+		/* Change background colour. */
+		background-color: #02b342;
+		transition: background-color .2s;
+}
+
+/* Without a constant reminder the element will not be treated as blocks */
+.submenu {
+		display: inline-block;
+}
+
+.submenu-content {
+		/* By default this element will not display */
+		display: none;
+		/* 
+			The element positions itself relative to the ancestors. 
+			This aligns the navigation element with each other.
+		*/
+		position: absolute;
+		background-color: #009641;
+		color: white;
+		/* This fixes the element to a certain minimum width, otherwise elements are any width and not uniform, which is ugly. */
+		min-width: 160px;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.submenu-content a {
+		color: white;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+}
+
+/* Without this formatting the second level is horizontal */
+.submenu-content li {
+		color: white;
+		text-decoration: none;
+}
+
+#pageNav li {
+		/* "display: block" makes the submenu vertical, "display: inline-block" makes the submenu horizontal, on the same inline. */
+		display: block;
+}
+
+
+
+
+.submenu-content a:hover {
+		background-color: #02c042;
+}
+
+/* When the element is hovered, the below shows the hidden content */
+.submenu:hover .submenu-content {
+		display: block;
+}
+
+
+
+
+
+
+.submenu2 {
+    display: inline-block;
+				width: 100%;
+				min-width: 160px;
+}
+
+.submenu-content2 {
+    display: none;
+    position: absolute;
+    background-color: #009641;
+    /*min-width: 180px;*/
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.submenu-content2 a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.submenu-content2 a:hover {
+background-color: #02c042
+}
+
+.submenu2:hover .submenu-content2 {
+    display: block;
+}
+
+.submenu2:hover .pcBtnRight ~ .submenu-content2, .pcBtnRight, .mbutton2.pcBtnRight {
+    display: inline-block;
+}
+
+.mbutton2.pcBtnRight {
+    text-align: right;
+				width: 100%;
+				min-width: 160px;
+}
+
+
+
+.navBar ul ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		background-color: #009641;
+		opacity: 1;
+		font-size: 0;
+}
+
+.navBar li li li {
+		display:block;
+}
+
+.navBar li li a, .mbutton2 {
+		display: block;
+		color: white;
+		text-align: center;
+		min-width: 160px;
+		padding: 14px 16px;
+		text-decoration: none;
+		font-size:medium;
+}
+
+.mobileBtnBottom, .navBar li li a.mobileBtnBottom, .mobileBtnRight, .navBar li li a.mobileBtnRight {
+		display: none;
+}
+
+/*
+#test {
+		position:relative;
+		display: block;
+		width:100%;
+}
+*/
+
+
+
+
+
+/* 
+    The below uses the "@media" query to get information on the device.
+    This information can be used to make specific styles for different devices 
+    depending on their capabilities. For example, 1 style for PC and 1 style for Phones.
+    A media query returns either True or False. They can essentially be used as "if... else" statements.
+    If the screen is smaller than 992px, for example a tablet or smaller, the following style is used.
+*/
+@media only screen and not (min-width: 992px)  {
+		#pcNav,  #pcNav ul, #pcNav li, .pcBtn, .navBar li li a.pcBtn, .mbutton2.pcBtnRight, .navBar li li a.pcBtnRight {
+				display: none;
+		}
+
+		.mobileBtnBottom, .navBar li li a.mobileBtnBottom, .mobileBtnRight {
+				display: inline-block;
+		}
+		
+		#mobileMenuButton {
+				height: 50px;
+				background-color: #009641;
+				display: flex;
+				flex-direction: column;
+				width: 50px;
+				font-size: 0;
+				box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3), 0px -2px 2px 2px rgba(227, 255, 87, 0.3) inset, 0 2px 2px -2px rgba(227, 255, 87, 0.5) inset;
+				z-index: 2;
+		}
+		
+		#mobileMenuButton:hover, .mobileMenu:hover {
+				cursor: pointer;
+		}
+		
+		.mobileMenu {
+				margin: auto 14px auto auto;
+				height: 5px;
+				flex-wrap: wrap;
+				border-radius: 2px;
+				background-color: white;
+				width: 25px;
+				font-size: 0;
+				z-index: 0;
+		}
+		
+		#navbar {
+				display: none;
+				margin: 0;
+				padding: 0;
+				position: fixed;
+				top: 0;
+				/* This makes the navigation bar as wide as the page. */
+				height: 100%;
+				background-color: #009641;
+				opacity: 0;
+				transition: opacity 0.5s;
+		}
+		
+		.navBar {
+				background-color: rgba(0, 150, 65, 0.5);
+				position: fixed;
+				top: 0;
+				z-index: 30000000;
+				opacity: 0.95;
+		}
+        
+        .submenu-content2 {
+				font-size: 0;
+		}
+		
+		
+		
+		.navBar ul ul {
+				display: inline-block;
+				margin: 0;
+				padding: 0;
+				/* This makes the navigation bar as tall as the page. */
+				height: 100%;
+				background-color: #009641;
+		        font-size: 0;
+		}
+		
+		.navBar ul li {
+				display:block;
+				margin: 0;
+				padding: 0;
+				/*Restores the default size of text*/
+				font-size: medium;
+				background-color: #009641;
+		}
+
+		.submenu:hover .submenu-content, .submenu2:hover .submenu-content2, .submenu2:hover .pcBtnRight ~ .submenu-content2 {
+				display: none;
+		}
+		
+		.submenu:focus .submenu-content, .submenu .submenu-content:hover, .submenu .submenu-content:focus {
+				display: block;
+				outline: 0;
+				border: 0;
+				font-size: 0;
+		}
+		
+		.submenu:focus .submenu-content {
+				background-color: #009641;
+		}
+
+		/* When an element with the "tabindex=" attribute is clicked, the below shows the hidden content */
+		.submenu:focus .mobileBtnBottom ~ .submenu-content, .submenu .mobileBtnBottom ~ .submenu-content:hover, .submenu:hover .submenu-content .submenu2:focus .mobileBtnBottom ~ .submenu-content2, .submenu2 .mobileBtnBottom ~ .submenu-content2:hover, .submenu:focus .mobileBtnRight ~ .submenu-content, .submenu .mobileBtnRight ~ .submenu-content:hover, .submenu:hover .submenu-content .submenu2:focus .mobileBtnRight ~ .submenu-content2, .submenu2 .mobileBtnRight ~ .submenu-content2:hover {
+				display: inline-block;
+				position: fixed;
+		}
+		
+		/*	On click/tap, the menu is displayed	*/
+		#mobileMenuButton:focus #navbar, .mobileMenu:focus ~ #navbar, .mobileMenu ~ #navbar:hover , .mobileMenu ~ #navbar:focus {
+				display: block;
+				position: fixed;
+				top: 0;
+				/* This makes the navigation bar as tall as the page. */
+				height: 100%;
+				background-color: #009641;
+				box-shadow: 120px 0px 992px 744px rgba(0, 0, 0, 1);
+				opacity: 1;
+				transition: opacity 1s;
+		}
+		
+		/*
+		 .navBar ul {
+				display: none;
+				position: fixed;
+				top: 0;
+				// This makes the navigation bar as tall as the page. 
+				height: 100%;
+				background-color: #009641;
+		}
+		*/
+		
+		 .navBar ul li a, .mbutton, .navBar ul li li .mbutton2.mobileBtnBottom {
+				min-width: 130px;
+				width: 130px;
+		}
+		
+		 .navBar ul li li a, .navBar ul li li .mbutton2 {
+				width: 190px;
+				padding: 14px 16px;
+				text-decoration: none;
+		}
+		
+		.mbutton2 {
+				text-align: right;
+		}
+		
+		 .submenu {
+				font-size: 0;
+		}
+		
+		.navBar ul li, .submenu-content, .mbutton {
+				font-size: medium;
+		}
+		
+		/* Without this formatting the second level is horizontal */
+		.submenu-content li {
+				color: white;
+				text-decoration: none;
+				/* "display: block" makes the submenu vertical, "display: inline-block" makes the submenu horizontal, on the same inline. */
+				display: block;
+		}
+		
+		.submenu-content a {
+				color: white;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+		}
+}

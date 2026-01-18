@@ -5,7 +5,7 @@ Content-Type: application/json
 {
     "title": "HDasdF",  
     "description": "FSdsD", 
-    "body": 3,
+    "body": 3
     "coursID": "FSDmdsf", 
     "quizID": 2355
 }
