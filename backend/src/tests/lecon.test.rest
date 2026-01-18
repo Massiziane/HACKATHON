@@ -1,62 +1,32 @@
-@baseUrl = http://localhost:3000
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2ZrOHYzZjAwMDZ2Y2k4cG9sYnh5eTEiLCJlbWFpbCI6InByb2ZAdGVzdC5jb20iLCJyb2xlIjoiZW5zZWlnbmFudCIsImlhdCI6MTc2ODQ4ODI4MCwiZXhwIjoxNzY4NDk5MDgwfQ.eV4w0FmgKIRj368UkNTdRRHHADNsW-WpJzpBu0eZip4
-
-### sign up / create user admin 
-POST http://localhost:3000/auth/signup
+### POST formation
+POST http://localhost:3000/lecon
 Content-Type: application/json
 
 {
-  "firstName": "prof",
-  "lastName": "prof",
-  "email": "prof@test.com",
-  "password": "password123",
-  "role": "enseignant"
+    "title": "HDasdF",  
+    "description": "FSdsD", 
+    "body": 3
+    "coursID": "FSDmdsf", 
+    "quizID": 2355
 }
-### HTTP/1.1 200 OK
-POST http://localhost:3000/auth/signin
+
+### get all lecon
+GET http://localhost:3000/lecon
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQyODc2OCwiZXhwIjoxNzY4NDM5NTY4fQ.5rmQ9S4nF6oGPl4vWhS9t99oksfUrPz9_evV4z-O9B0
+
+### get lecon by id
+GET http://localhost:3000/lecon/cmkekx0nj0000oki8rt33k1q7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQyODc2OCwiZXhwIjoxNzY4NDM5NTY4fQ.5rmQ9S4nF6oGPl4vWhS9t99oksfUrPz9_evV4z-O9B0
+
+### update lecon by an admin 
+POST http://localhost:3000/lecon
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQyODc2OCwiZXhwIjoxNzY4NDM5NTY4fQ.5rmQ9S4nF6oGPl4vWhS9t99oksfUrPz9_evV4z-O9B0
 Content-Type: application/json
 
 {
-  "email": "prof@test.com",
-  "password": "password123"
+  "name": "Nouvelle catégorie"
 }
 
-### "message": "Leçon créée avec succès."
-POST {{baseUrl}}/lecons
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-{
-  "title": "Introduction à Node.js",
-  "description": "Présentation du runtime Node.js",
-  "body": "Node.js permet d’exécuter JavaScript côté serveur.",
-  "coursId": "cmkfk0ncw0004vci8sshrzc4a",
-  "quizId": null
-}
-
-### get all lecons
-GET {{baseUrl}}/lecons
-Authorization: Bearer {{token}}
-
-### get lecon par id
-GET {{baseUrl}}/lecons/cmkfkaes60007vci8cemnxs9d
-Authorization: Bearer {{token}}
-
-
-### update lecon
-PUT {{baseUrl}}/lecons/cmkfkaes60007vci8cemnxs9d
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-{
-  "title": "Node.js Avancé",
-  "description": "Event loop, streams",
-  "body": "Approfondissement du fonctionnement interne de Node.js",
-  "coursId": "cmkfk0ncw0004vci8sshrzc4a",
-  "quizId": null
-}
-
-### delete a lecon
-
-DELETE {{baseUrl}}/lecons/cmkfkdz4d0008vci8e9v4xkwu
-Authorization: Bearer {{token}}
+### delete lecon by admin : HTTP/1.1 200 OK
+DELETE http://localhost:3000/lecon/cmkekz74n0003oki8c29ps2e3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNta2VrM2J3aTAwMDFvOGk4cDU0aXAzcHEiLCJlbWFpbCI6ImFkbWludEB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODQyODc2OCwiZXhwIjoxNzY4NDM5NTY4fQ.5rmQ9S4nF6oGPl4vWhS9t99oksfUrPz9_evV4z-O9B0
