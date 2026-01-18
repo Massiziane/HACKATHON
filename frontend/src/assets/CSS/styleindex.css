@@ -1,0 +1,137 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2016-02-01, 15:16:34
+    Author     : Alex
+*/
+
+/*
+background-size: cover; 
+<video autoplay loop poster="polina.jpg">
+
+No idea what this does, gonna try it later.
+*/
+
+*   {
+    margin:0;
+    padding:0;
+				box-sizing: border-box;
+}
+
+body{
+				/*
+    background-image: url("../images/MassEffectBackground.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+				*/
+				background-color: grey;
+    color: white;
+	font-family: "Times New Roman", serif;
+}
+
+map{
+	border:transparent;
+	display:none;
+}
+
+area{
+	border:transparent;
+}
+
+
+
+.left{
+    text-align: left;
+}
+
+.right{
+    text-align: right;
+}
+
+.center{
+    text-align: center;
+}
+
+.floatleft{
+    float:left;
+    border:none;
+}
+
+.clear{
+    clear:both;
+}
+
+.hidden{
+    display:none;
+}
+
+.verticaltop{
+    position: fixed;
+    right: 0;
+    top: 5%;
+    margin: -2.5em 0 0 0;
+    z-index: 2;
+}
+
+.verticalbottom{
+    position: fixed;
+    right: 0;
+    top: 100%;
+    margin: -2.5em 0 0 0;
+}
+
+.contenu {
+    border:none;/*1px solid lightgrey*/
+    position:relative;
+}
+
+.logo{
+    margin-top:5%;
+    margin-left: auto;
+    margin-right: auto;
+    border:none;
+}
+
+
+
+
+
+div#contenu {
+    background-color: rgba(0, 0, 0, 0.6);
+    font-size: 20px;
+    width: 70%;
+    margin-left:auto;
+    margin-right:auto;
+    height: auto;
+    border:none;
+}
+
+
+a:link  {
+    color: white;
+}
+
+a:visited  {
+    color: white;
+}
+
+a:hover {
+    color: #55607e;
+}
+
+
+a.blue:link  {
+    color: blue;
+}
+
+a.blue:visited  {
+    color: blue;
+}
+
+a.blue:hover {
+    color: red;
+}
